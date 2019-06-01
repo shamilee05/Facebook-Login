@@ -4,22 +4,43 @@
 </head>
 
 <body>
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=347474549128935&autoLogAppEvents=1"></script>
 	
 <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '347474549128935',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.3'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+	
+	FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+	
 	function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
 }
-	FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-	
 </script>
 	
 	<p> This is my login page </p>
-	<div class="fb-login-button" data-width="10" data-size="medium" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+	<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 </body>
 </html>
