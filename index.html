@@ -4,6 +4,22 @@
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=347474549128935&autoLogAppEvents=1"></script>
+	
+<script>
+	function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+	FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+	
+</script>
+	
 	<p> This is my login page </p>
+	<div class="fb-login-button" data-width="10" data-size="medium" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 </body>
 </html>
